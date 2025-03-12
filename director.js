@@ -1,10 +1,11 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
-const path = require('path');
-const { OpenAI } = require('openai');
-const { exec } = require('child_process');
-const { promisify } = require('util');
-const execAsync = promisify(exec);
+import fs from 'fs';
+import yaml from 'js-yaml';
+import path from 'path';
+import { OpenAI } from 'openai';
+import { exec as execCb } from 'child_process';
+import { promisify } from 'util';
+import { fileURLToPath } from 'url';
+const execAsync = promisify(execCb);
 
 class EvaluationResult {
   constructor(success, feedback = null) {
@@ -246,10 +247,10 @@ Return a structured JSON response with the following structure: {
 }
 
 // Command line interface
-if (require.main === module) {
+if (import.meta.url === fileURLToPath(process.argv[1])) {
   const configPath = process.argv[3] || 'specs/basic.yaml';
   const director = new Director(configPath);
   director.direct().catch(console.error);
 }
 
-module.exports = Director;
+export default Director;
