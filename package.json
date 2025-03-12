@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/ryanjwessel/ai-director-node#readme",
   "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
     "js-yaml": "^4.1.0",
     "openai": "^4.87.3"
   }
