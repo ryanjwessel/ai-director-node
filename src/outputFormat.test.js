@@ -5,7 +5,7 @@ import {
   formatAsHtml,
   formatAsHtmlWithSliderFilter
 } from './outputFormat.js';
-import { WordCounts, TranscriptAnalysis } from './data_types.js';
+import { WordCounts, TranscriptAnalysis } from './dataTypes.js';
 
 describe('Output Format Tests', () => {
   // Common test data
