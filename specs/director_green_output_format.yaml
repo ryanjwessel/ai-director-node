@@ -16,7 +16,7 @@ context_editable:
 context_read_only:
   - src/dataTypes.js
 
-execution_command: npx jest src/*.test.js
+execution_command: npm test
 
 max_iterations: 5
 
