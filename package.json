@@ -1,0 +1,23 @@
+{
+  "name": "ai-director-node",
+  "version": "1.0.0",
+  "description": "An AI Director script written in Node.js. Inspired by: https://agenticengineer.com/principled-ai-coding",
+  "main": "director.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanjwessel/ai-director-node.git"
+  },
+  "author": "Ryan Wessel <ryan@wesselstudios.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanjwessel/ai-director-node/issues"
+  },
+  "homepage": "https://github.com/ryanjwessel/ai-director-node#readme",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "openai": "^4.87.3"
+  }
+}
