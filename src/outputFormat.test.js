@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import yaml from 'js-yaml';
 import {
   formatAsStr,
@@ -22,15 +21,15 @@ describe('Output Format Tests', () => {
     it('should format data as a string with expected elements', () => {
       const result = formatAsStr(transcriptAnalysis, wordCounts);
 
-      expect(result).to.include('Word Counts:');
-      expect(result).to.include('test: 5');
-      expect(result).to.include('example: 3');
-      expect(result).to.include('Transcript Analysis:');
-      expect(result).to.include('A test summary');
-      expect(result).to.include('Point 1');
-      expect(result).to.include('Point 2');
-      expect(result).to.include('Neutral sentiment');
-      expect(result).to.include('Keywords:');
+      expect(result).toContain('Word Counts:');
+      expect(result).toContain('test: 5');
+      expect(result).toContain('example: 3');
+      expect(result).toContain('Transcript Analysis:');
+      expect(result).toContain('A test summary');
+      expect(result).toContain('Point 1');
+      expect(result).toContain('Point 2');
+      expect(result).toContain('Neutral sentiment');
+      expect(result).toContain('Keywords:');
     });
   });
 
@@ -39,14 +38,14 @@ describe('Output Format Tests', () => {
       const result = formatAsYaml(transcriptAnalysis, wordCounts);
       const parsedYaml = yaml.load(result);
 
-      expect(parsedYaml).to.have.property('word_counts');
-      expect(parsedYaml.word_counts).to.deep.equal({ "test": 5, "example": 3 });
+      expect(parsedYaml).toHaveProperty('word_counts');
+      expect(parsedYaml.word_counts).toEqual({ "test": 5, "example": 3 });
       
-      expect(parsedYaml).to.have.property('transcript_analysis');
-      expect(parsedYaml.transcript_analysis.quick_summary).to.equal('A test summary');
-      expect(parsedYaml.transcript_analysis.bullet_point_highlights).to.deep.equal(['Point 1', 'Point 2']);
-      expect(parsedYaml.transcript_analysis.sentiment_analysis).to.equal('Neutral sentiment');
-      expect(parsedYaml.transcript_analysis.keywords).to.deep.equal(['test', 'example']);
+      expect(parsedYaml).toHaveProperty('transcript_analysis');
+      expect(parsedYaml.transcript_analysis.quick_summary).toBe('A test summary');
+      expect(parsedYaml.transcript_analysis.bullet_point_highlights).toEqual(['Point 1', 'Point 2']);
+      expect(parsedYaml.transcript_analysis.sentiment_analysis).toBe('Neutral sentiment');
+      expect(parsedYaml.transcript_analysis.keywords).toEqual(['test', 'example']);
     });
   });
 
@@ -55,23 +54,23 @@ describe('Output Format Tests', () => {
       const result = formatAsHtml(transcriptAnalysis, wordCounts);
 
       // Check basic HTML structure
-      expect(result).to.include('<!DOCTYPE html>');
-      expect(result).to.include('<html>');
-      expect(result).to.include('<body>');
-      expect(result).to.include('</body>');
-      expect(result).to.include('</html>');
+      expect(result).toContain('<!DOCTYPE html>');
+      expect(result).toContain('<html>');
+      expect(result).toContain('<body>');
+      expect(result).toContain('</body>');
+      expect(result).toContain('</html>');
 
       // Check content elements
-      expect(result).to.include('<h2>Word Counts</h2>');
-      expect(result).to.include('<table border=\'1\'>');
-      expect(result).to.include('<td>test</td><td>5</td>');
-      expect(result).to.include('<td>example</td><td>3</td>');
-      expect(result).to.include('A test summary');
-      expect(result).to.include('Point 1');
-      expect(result).to.include('Point 2');
-      expect(result).to.include('Neutral sentiment');
-      expect(result).to.include('test');
-      expect(result).to.include('example');
+      expect(result).toContain('<h2>Word Counts</h2>');
+      expect(result).toContain('<table border=\'1\'>');
+      expect(result).toContain('<td>test</td><td>5</td>');
+      expect(result).toContain('<td>example</td><td>3</td>');
+      expect(result).toContain('A test summary');
+      expect(result).toContain('Point 1');
+      expect(result).toContain('Point 2');
+      expect(result).toContain('Neutral sentiment');
+      expect(result).toContain('test');
+      expect(result).toContain('example');
     });
   });
 
@@ -80,19 +79,19 @@ describe('Output Format Tests', () => {
       const result = formatAsHtmlWithSliderFilter(transcriptAnalysis, wordCounts);
 
       // Check HTML structure and slider elements
-      expect(result).to.include('<input type=\'range\'');
-      expect(result).to.include('id=\'wordCountSlider\'');
-      expect(result).to.include('data-count=\'5\'');
-      expect(result).to.include('data-count=\'3\'');
+      expect(result).toContain('<input type=\'range\'');
+      expect(result).toContain('id=\'wordCountSlider\'');
+      expect(result).toContain('data-count=\'5\'');
+      expect(result).toContain('data-count=\'3\'');
       
       // Check content elements
-      expect(result).to.include('<td>test</td>');
-      expect(result).to.include('<td>example</td>');
+      expect(result).toContain('<td>test</td>');
+      expect(result).toContain('<td>example</td>');
       
       // Check JavaScript functionality
-      expect(result).to.include('<script>');
-      expect(result).to.include('addEventListener');
-      expect(result).to.include('</script>');
+      expect(result).toContain('<script>');
+      expect(result).toContain('addEventListener');
+      expect(result).toContain('</script>');
     });
   });
 });

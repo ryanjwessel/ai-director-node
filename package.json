@@ -5,7 +5,7 @@
   "main": "director.js",
   "type": "module",
   "scripts": {
-    "test": "mocha src/**/*.test.js --experimental-modules"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
     "openai": "^4.87.3"
   },
   "devDependencies": {
-    "chai": "^5.2.0",
-    "mocha": "^10.8.2"
+    "jest": "^29.7.0"
   }
 }
