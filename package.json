@@ -24,7 +24,7 @@
     "openai": "^4.87.3"
   },
   "devDependencies": {
-    "chai": "^5.1.0",
-    "mocha": "^10.3.0"
+    "chai": "^5.2.0",
+    "mocha": "^10.8.2"
   }
 }
