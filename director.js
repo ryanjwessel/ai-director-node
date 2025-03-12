@@ -247,7 +247,7 @@ Return a structured JSON response with the following structure: {
 
 // Command line interface
 if (require.main === module) {
-  const configPath = process.argv[2] || 'specs/basic.yaml';
+  const configPath = process.argv[3] || 'specs/basic.yaml';
   const director = new Director(configPath);
   director.direct().catch(console.error);
 }
