@@ -247,7 +247,7 @@ Return a structured JSON response with the following structure: {
 }
 
 // Command line interface
-if (import.meta.url === fileURLToPath(process.argv[1])) {
+if (process.argv[1].endsWith('director.js')) {
   const configPath = process.argv[3] || 'specs/basic.yaml';
   const director = new Director(configPath);
   director.direct().catch(console.error);
