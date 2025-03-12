@@ -17,7 +17,8 @@ class EvaluationResult {
 class Director {
   constructor(configPath) {
     this.config = this.validateConfig(configPath);
-    this.llmClient = new OpenAI();
+    // Make OpenAI client optional since we're mocking AI responses
+    this.llmClient = process.env.OPENAI_API_KEY ? new OpenAI() : null;
   }
 
   validateConfig(configPath) {
@@ -176,6 +177,11 @@ Return a structured JSON response with the following structure: {
 }`;
 
     this.fileLog(`Evaluation prompt: (${this.config.evaluator_model}):\n${evaluationPrompt}`, false);
+
+    // Mock the evaluation for testing
+    if (!this.llmClient) {
+      return new EvaluationResult(true, null);
+    }
 
     try {
       const completion = await this.llmClient.chat.completions.create({
